@@ -1,11 +1,14 @@
 from requests import RequestException
+from telebot.apihelper import ApiException
 
 
 class DebugInfo(Exception):
     pass
 
-class ErrorInfo(RequestException, KeyError, TypeError, Exception):
+
+class ErrorInfo(RequestException, ApiException, KeyError, TypeError):
     pass
+
 
 class EnvVariableIsMissing(Exception):
     pass
@@ -23,13 +26,9 @@ class ListIsEmpty(DebugInfo):
     pass
 
 
-class NotNewStutus(DebugInfo):
+class KeyDoesNotExist(ErrorInfo):
     pass
 
 
-class StatusDoesNotExist(ErrorInfo):
-    pass
-
-
-class ErrorSendMessage(ErrorInfo):
+class ErrorSendMessage(Exception):
     pass
